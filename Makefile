@@ -29,6 +29,7 @@ dev:
 
 fmt:
 	go fmt ./src/...
+	node ./scripts/fmt.js
 
 lint:
 	go vet ./src/...
