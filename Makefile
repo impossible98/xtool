@@ -7,7 +7,7 @@ SHELL := env /bin/bash
 all:
 	@node ./scripts/all.js
 
-build: fmt
+build:
 	go build -ldflags "-s -w" -o ./dist/$(BIN_NAME) ./src/main.go
 	@echo "Build success"
 
@@ -19,6 +19,9 @@ build-linux:
 
 build-windows:
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./dist/$(BIN_NAME)-windows-amd64.exe ./src/main.go
+
+commit: fmt build
+	node ./scripts/commit.js
 
 dev:
 	go build -o ./dist/$(BIN_NAME) ./src/main.go
