@@ -43,3 +43,6 @@ release: build-darwin build-linux build-windows
 
 start:
 	@./dist/$(BIN_NAME)
+
+tag:
+	node ./scripts/tag.js
