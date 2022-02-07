@@ -2,6 +2,15 @@ import * as childProcess from 'child_process';
 import * as os from 'os';
 import * as path from 'path';
 
+class Color {
+    static green(word: string) {
+        return `\x1B[32m${word}\x1B[0m`;
+    }
+    static red(word: string) {
+        return `\x1B[31m${word}\x1B[0m`;
+    }
+}
+
 class Fmt {
     exec() {
         const commandName = 'dprint';
@@ -11,15 +20,15 @@ class Fmt {
             //
             childProcess.execFile(command, ['fmt'], function(error, stdout, stderr) {
                 if (error) {
-                    console.error(`Error:\n ${error}`);
+                    console.log(`${Color.red('Error')}:\n ${error}`);
                 }
                 //
                 if (stdout) {
-                    console.log(`Out:\n${stdout}`);
+                    console.log(`${Color.green('Out')}:\n${stdout}`);
                 }
                 //
                 if (stderr) {
-                    console.error(`stderr: ${stderr}`);
+                    console.log(`${Color.red('Stderr')}: ${stderr}`);
                 }
             });
         } else {
@@ -27,15 +36,15 @@ class Fmt {
             //
             childProcess.execFile(command, ['fmt'], function(error, stdout, stderr) {
                 if (error) {
-                    console.error(`Error:\n ${error}`);
+                    console.log(`${Color.red('Error')}:\n ${error}`);
                 }
                 //
                 if (stdout) {
-                    console.log(`Out:\n${stdout}`);
+                    console.log(`${Color.green('Out')}:\n${stdout}`);
                 }
                 //
                 if (stderr) {
-                    console.error(`stderr: ${stderr}`);
+                    console.log(`${Color.red('Stderr')}: ${stderr}`);
                 }
             });
         }
