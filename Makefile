@@ -1,8 +1,11 @@
-APP_NAME = xTool
-BIN_NAME = xtool
-APP_VERSION = 0.0.1
+APP_NAME := xTool
+BIN_NAME := xtool
+APP_VERSION := 0.0.1
 
 SHELL := env /bin/bash
+
+all:
+	@node ./scripts/all.js
 
 build: fmt
 	go build -ldflags "-s -w" -o ./dist/$(BIN_NAME) ./src/main.go
